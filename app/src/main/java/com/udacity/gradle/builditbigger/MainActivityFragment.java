@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.JokeTeller;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -26,7 +27,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     @BindView(R.id.tell_joke_btn) Button tell_joke;
     @BindView(R.id.adView) AdView mAdView;
     private Unbinder unbinder;
-
+    JokeTeller jokeTeller;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         tell_joke.setOnClickListener(this);
+        jokeTeller = new JokeTeller();
+
     }
 
     @Override
@@ -58,7 +61,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tell_joke_btn:
-                Toast.makeText(getActivity(),"Joke tha Joke", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),jokeTeller.getJoke(), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

@@ -22,8 +22,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':javajokes')
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
-    // Added for AdMob
     compile "com.google.android.gms:play-services-ads:$rootProject.ext.playServicesVersion"
 
     compile "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"
