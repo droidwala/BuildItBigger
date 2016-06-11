@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.JokeTeller;
+import com.example.punit.displayjokes.DisplayJokeActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -61,7 +63,11 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tell_joke_btn:
-                Toast.makeText(getActivity(),jokeTeller.getJoke(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getActivity(), DisplayJokeActivity.class);
+                Bundle b = new Bundle();
+                b.putString("JOKE",jokeTeller.getJoke());
+                i.putExtras(b);
+                startActivity(i);
                 break;
             default:
                 break;
