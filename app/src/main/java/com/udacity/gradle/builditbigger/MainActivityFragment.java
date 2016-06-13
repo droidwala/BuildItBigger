@@ -1,9 +1,11 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,11 +65,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tell_joke_btn:
-                Intent i = new Intent(getActivity(), DisplayJokeActivity.class);
-                Bundle b = new Bundle();
-                b.putString("JOKE",jokeTeller.getJoke());
-                i.putExtras(b);
-                startActivity(i);
+                new EndpointsAsyncTask().execute(new Pair<Context, String>(getActivity(),"Jesse"));
                 break;
             default:
                 break;

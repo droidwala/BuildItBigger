@@ -30,4 +30,5 @@ dependencies {
     compile "com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion"
     apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
 
+    compile project(path: ':backend', configuration: 'android-endpoints')
 }
