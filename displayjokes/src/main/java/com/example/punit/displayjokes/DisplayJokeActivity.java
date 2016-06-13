@@ -13,7 +13,7 @@ public class DisplayJokeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disp_joke);
         joke_txt = (TextView) findViewById(R.id.joke_txt);
-        String joke = getIntent().getExtras().getString("JOKE");
+        String joke = getIntent().getStringExtra("JOKE");
         joke_txt.setText(joke);
 
     }

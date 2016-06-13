@@ -1,19 +1,14 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
-import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ProgressBar;
 
-import com.example.JokeTeller;
-import com.example.punit.displayjokes.DisplayJokeActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -30,8 +25,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
     @BindView(R.id.tell_joke_btn) Button tell_joke;
     @BindView(R.id.adView) AdView mAdView;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
     private Unbinder unbinder;
-    JokeTeller jokeTeller;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,12 +46,10 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         tell_joke.setOnClickListener(this);
-        jokeTeller = new JokeTeller();
-
     }
 
     @Override
-    public void onDestroyView() {
+    public void onDestroyView(){
         super.onDestroyView();
         unbinder.unbind();
     }
@@ -65,7 +58,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tell_joke_btn:
-                new EndpointsAsyncTask().execute(new Pair<Context, String>(getActivity(),"Jesse"));
+                progressBar.setVisibility(View.VISIBLE);
+                new EndpointsAsyncTask().execute(getActivity());
                 break;
             default:
                 break;
