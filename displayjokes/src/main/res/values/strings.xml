@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DisplayJokes</string>
+    <string name="disp_joke_type">HAHAHAHA!</string>
 </resources>

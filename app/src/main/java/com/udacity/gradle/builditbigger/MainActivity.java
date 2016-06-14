@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public class EndpointsAsyncTask extends AsyncTask<Void,Void,String> {
 
         private MyApi myApiService = null;
-        private Context context;
         JokeTeller jokeTeller;
 
         @Override

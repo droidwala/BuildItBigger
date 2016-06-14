@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="disp_card_joke_height">250dp</dimen>
+    <dimen name="disp_card_joke_margin">16dp</dimen>
+    <dimen name="disp_card_joke_elevation">4dp</dimen>
+    <dimen name="disp_card_joke_corner_radius">4dp</dimen>
+    <dimen name="disp_card_joke_type_margin">10dp</dimen>
+    <dimen name="textview_joke_margin">16dp</dimen>
+</resources>
