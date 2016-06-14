@@ -6,6 +6,7 @@
 
 package com.example.PUNIT.myapplication.backend;
 
+import com.example.JokeTeller;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -25,9 +26,10 @@ import javax.inject.Named;
 public class MyEndpoint {
 
     @ApiMethod(name = "tellJoke")
-    public MyBean tellJoke(@Named("joke") String joke){
+    public MyBean tellJoke(){
         MyBean response = new MyBean();
-        response.setData(joke);
+        JokeTeller jokeTeller = new JokeTeller();
+        response.setData(jokeTeller.getJoke());
         return response;
     }
 

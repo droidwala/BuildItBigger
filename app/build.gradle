@@ -22,7 +22,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':javajokes')
     compile project(':displayjokes')
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
     compile "com.google.android.gms:play-services-ads:$rootProject.ext.playServicesVersion"

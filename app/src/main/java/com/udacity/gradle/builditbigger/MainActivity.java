@@ -1,6 +1,5 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,7 +10,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.JokeTeller;
+
 import com.example.punit.displayjokes.DisplayJokeActivity;
 import com.example.punit.myapplication.backend.myApi.MyApi;
 import com.google.android.gms.ads.AdRequest;
@@ -82,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public class EndpointsAsyncTask extends AsyncTask<Void,Void,String> {
 
         private MyApi myApiService = null;
-        JokeTeller jokeTeller;
 
         @Override
         protected void onPreExecute() {
@@ -100,9 +98,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 myApiService  = builder.build();
             }
 
-            jokeTeller = new JokeTeller();
+
             try {
-                return myApiService.tellJoke(jokeTeller.getJoke()).execute().getData();
+                return myApiService.tellJoke().execute().getData();
             } catch (IOException e) {
                 return e.getMessage();
             }
