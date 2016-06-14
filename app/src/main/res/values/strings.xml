@@ -4,4 +4,8 @@
     <string name="button_text">Tell Joke</string>
     <string name="action_settings">Settings</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="splash_screen_title">BUILD\nIT\nBIGGER</string>
+    <string name="main_screen_joke_question">Wanna hear some Joke???</string>
+    <string name="main_button_yes_for_joke">Yes,I\'m In!</string>
+    <string name="main_button_no_for_joke">Nope!</string>
 </resources>

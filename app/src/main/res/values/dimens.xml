@@ -3,4 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="progress_bar_width_height">48dp</dimen>
+    <dimen name="title_text_sizes">26sp</dimen>
+    <dimen name="main_button_margins">50dp</dimen>
+    <dimen name="main_button_padding">15dp</dimen>
 </resources>

@@ -20,17 +20,15 @@ import butterknife.Unbinder;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment implements View.OnClickListener{
+public class RandomFragment extends Fragment{
 
 
-    @BindView(R.id.tell_joke_btn) Button tell_joke;
     @BindView(R.id.adView) AdView mAdView;
-    @BindView(R.id.progressBar) ProgressBar progressBar;
     private Unbinder unbinder;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.activity_main, container, false);
         unbinder = ButterKnife.bind(this,view);
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
@@ -45,7 +43,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        tell_joke.setOnClickListener(this);
+       // tell_joke.setOnClickListener(this);
     }
 
     @Override
@@ -54,6 +52,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         unbinder.unbind();
     }
 
+    /*
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -65,4 +64,5 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                 break;
         }
     }
+    */
 }
