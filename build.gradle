@@ -24,3 +24,27 @@ ext{
     playServicesVersion = '8.4.0'
     butterKnifeVersion = '8.0.1'
 }
+
+task startServer(dependsOn:':backend:appengineRun'){
+    evaluationDependsOn ":backend"
+    project(":backend") {
+        appengine {
+            daemon true
+        }
+    }
+}
+
+task startTests(dependsOn: ':app:connectedAndroidTest'){
+}
+
+task stopServer(dependsOn: ':backend:appengineStop'){
+    doLast{
+        println "DONE"
+    }
+}
+
+task theTask(dependsOn:['startServer','startTests','stopServer']){
+    startTests.mustRunAfter startServer
+    stopServer.mustRunAfter startTests
+}
+
