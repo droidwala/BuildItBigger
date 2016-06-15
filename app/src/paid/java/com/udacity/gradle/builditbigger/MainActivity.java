@@ -10,11 +10,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
 import com.example.punit.displayjokes.DisplayJokeActivity;
 import com.example.punit.myapplication.backend.myApi.MyApi;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
@@ -36,10 +33,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        //Setting up Click listeners
         yes_for_joke.setOnClickListener(this);
         no_for_joke.setOnClickListener(this);
     }
 
+
+    /**
+     * Handling button click events
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -55,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * Used during PreExecute phase of EndPointsAsyncTask
+     */
     private void hideElements(){
         question.setVisibility(View.GONE);
         yes_for_joke.setVisibility(View.GONE);
@@ -62,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressBar.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Used during PostExecute phase of EndPointsAsyncTask
+     */
     private void showElements(){
         question.setVisibility(View.VISIBLE);
         yes_for_joke.setVisibility(View.VISIBLE);
@@ -69,6 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressBar.setVisibility(View.GONE);
     }
 
+    /**
+     * Fetches Joke from Endpoint supplied by javajokes library random jokes generator
+     */
     public class EndpointsAsyncTask extends AsyncTask<Void,Void,String> {
 
         private MyApi myApiService = null;
@@ -88,8 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 myApiService  = builder.build();
             }
-
-
             try {
                 return myApiService.tellJoke().execute().getJoke();
             } catch (IOException e) {
