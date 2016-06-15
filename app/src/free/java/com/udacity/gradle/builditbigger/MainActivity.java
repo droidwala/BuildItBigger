@@ -54,26 +54,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         interstitialAd = new InterstitialAd(this);
         interstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
 
+
         //Listening to various Ad Events and reacting accordingly.
         interstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
                 super.onAdClosed();
-                startDisplayJokeActivity();
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                super.onAdFailedToLoad(errorCode);
-                startDisplayJokeActivity();
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                interstitialAd.show();
+                requestInterstitial();
+                new EndpointsAsyncTask().execute();
             }
         });
+
+        requestInterstitial();
+    }
+
+    private void requestInterstitial(){
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        interstitialAd.loadAd(adRequest);
     }
 
     /**
@@ -94,7 +93,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_main_yes:
-                new EndpointsAsyncTask().execute();
+                if(interstitialAd.isLoaded()){
+                    interstitialAd.show();
+                }
+                else {
+                    new EndpointsAsyncTask().execute();
+                }
                 break;
             case R.id.button_main_no:
                 finish();
@@ -172,10 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected void onPostExecute(String result) {
             joke = result;
-            AdRequest adRequest = new AdRequest.Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .build();
-            interstitialAd.loadAd(adRequest);
+            startDisplayJokeActivity();
         }
     }
 

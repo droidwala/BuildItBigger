@@ -29,12 +29,12 @@ public class MainActivityTest {
         onView(withId(R.id.textview_main_askquestion)).check(matches(isDisplayed()));
         onView(withId(R.id.button_main_yes)).check(matches(isDisplayed()));
         onView(withId(R.id.button_main_no)).check(matches(isDisplayed()));
+        onView(withId(R.id.adView)).check(matches(isDisplayed()));
 
         onView(withId(R.id.button_main_yes)).perform(click());
 
-        onView(withContentDescription("Interstitial close button")).perform(click());
 
-        onView(withId(R.id.textview_disp_joke)).check(matches(notNullValue()));
+        onView(withId(R.id.textview_disp_joke)).check(matches(CustomMatchers.isTextViewEmpty()));
 
     }
 }
