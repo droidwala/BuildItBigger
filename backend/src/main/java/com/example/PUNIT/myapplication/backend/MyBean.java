@@ -5,11 +5,11 @@ public class MyBean {
 
     private String myData;
 
-    public String getData() {
-        return myData;
+    public String getJoke() {
+        return this.myData;
     }
 
-    public void setData(String data) {
-        myData = data;
+    public void setJoke(String data) {
+        this.myData = data;
     }
 }

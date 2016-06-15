@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             try {
-                return myApiService.tellJoke().execute().getData();
+                return myApiService.tellJoke().execute().getJoke();
             } catch (IOException e) {
                 return e.getMessage();
             }

@@ -21,7 +21,7 @@ import javax.inject.Named;
     ownerDomain = "backend.myapplication.PUNIT.example.com",
     ownerName = "backend.myapplication.PUNIT.example.com",
     packagePath=""
-  )
+   )
 )
 public class MyEndpoint {
 
@@ -29,7 +29,7 @@ public class MyEndpoint {
     public MyBean tellJoke(){
         MyBean response = new MyBean();
         JokeTeller jokeTeller = new JokeTeller();
-        response.setData(jokeTeller.getJoke());
+        response.setJoke(jokeTeller.getJoke());
         return response;
     }
 
