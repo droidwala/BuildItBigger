@@ -23,7 +23,11 @@ ext{
     supportLibVersion = '23.4.0'
     playServicesVersion = '8.4.0'
     butterKnifeVersion = '8.0.1'
+    jUnitVersion = '4.12'
+    espressoVersion = '2.2.2'
+    runnerVersion = '0.5'
 }
+
 
 task startServer(dependsOn:':backend:appengineRun'){
     evaluationDependsOn ":backend"
@@ -47,4 +51,7 @@ task theTask(dependsOn:['startServer','startTests','stopServer']){
     startTests.mustRunAfter startServer
     stopServer.mustRunAfter startTests
 }
+
+
+
 

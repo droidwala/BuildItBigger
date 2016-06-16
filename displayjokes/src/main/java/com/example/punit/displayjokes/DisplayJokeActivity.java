@@ -11,14 +11,23 @@ import android.widget.TextView;
 public class DisplayJokeActivity extends AppCompatActivity {
 
     TextView joke_text;
+    TextView joke_header;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disp_joke);
         setStatusBarColor();
         joke_text = (TextView) findViewById(R.id.textview_disp_joke);
+        joke_header = (TextView) findViewById(R.id.textview_disp_joketype);
         String joke = getIntent().getStringExtra("JOKE");
-        joke_text.setText(joke);
+        if(joke!=null) {
+            joke_text.setText(joke);
+        }
+        else{
+            joke_header.setText("DUH!!");
+            joke_text.setText("Our server joked on us! LOL!");
+        }
+
     }
 
     private void setStatusBarColor(){

@@ -6,4 +6,5 @@
     <dimen name="disp_card_joke_corner_radius">4dp</dimen>
     <dimen name="disp_card_joke_type_margin">10dp</dimen>
     <dimen name="textview_joke_margin">16dp</dimen>
+    <dimen name="text_disp_card_size">20sp</dimen>
 </resources>
